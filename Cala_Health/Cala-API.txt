@@ -1,0 +1,127 @@
+1. Login
+    Request:
+            url: '/login'
+            form-data(post): "username", "password"
+    Response:
+            result: JSON data, Http Status Code
+            data-fields: 'firstname', 'lastname', 'roles'
+            Example:
+                    {
+                        "firstname": "demo3",
+                        "lastname": "demo3",
+                        "roles": [
+                            5,
+                            1
+                        ]
+                    }
+
+2. User API
+    1) User Info View
+        -All Patients
+            Request:
+                    form-method: GET
+                    url        : 'api/v1/users' 
+            Response:
+                    result: JSON data, Http Status Code
+                    Example:
+                            {
+                                "7": {
+                                    "clinics": [
+                                        3,
+                                        2
+                                    ],
+                                    "firstname": "demo2",
+                                    "lastname": "demo2"
+                                },
+                                "9": {
+                                    "clinics": [],
+                                    "firstname": "demo4",
+                                    "lastname": "demo4"
+                                },
+                                "10": {
+                                    "clinics": [
+                                        2
+                                    ],
+                                    "firstname": "demo4",
+                                    "lastname": "demo4"
+                                }
+                            }
+        -Spec Patient
+            Request:
+                    form-method: GET
+                    url        : 'api/v1/users/<int:user_id>' 
+            Response:
+                    result: JSON data, Http Status Code
+                    Example:
+                            {
+                                "id": 7,
+                                "firstname": "demo2",
+                                "lastname": "demo2",
+                                "username": "demo123",
+                                "address": "address_demo2",
+                                "clinics": "[3, 2]",
+                                "phone_no": "123123"
+                            }
+    2) User Create
+        Request:
+                form-method: POST
+                url        : 'api/v1/users'
+                data-type  : JSON
+                Example    :
+                            {
+                                "firstname": "researcher1",
+                                "lastname": "as",
+                                "username": "kjy555",
+                                "phone_no": "123123",
+                                "address": "address_123",
+                                "role_id": 5,
+                                "clinic_id": 3
+                            }
+        Response:
+                result: JSON data, Http Status Code
+                Example:
+                        {"result":"success"}
+    3) User Info Modification
+        Request:
+                form-method: PUT
+                url        : 'api/v1/users/<int:user_id>'
+                data-type  : JSON
+                Example    :
+                            {
+                                "firstname": "researcher1",
+                                "lastname": "as",
+                                "phone_no": "123123",
+                                "address": "address_123"
+                            }
+        Response:
+                result: JSON data, Http Status Code
+                Example:
+                        {"result":"success"}
+    4)Delete
+        Request:
+                form-method: DELETE
+                url        : 'api/v1/users/<int:user_id>'
+                data-type  : JSON
+                Example    :
+                            {
+                                "role_id": "7",
+                                "clinic_id": "2",
+                            }
+        Response:
+                result: JSON data, Http Status Code
+                Example:
+                        {"result":"success"}
+
+3. Clinic API
+    1) Clinic Info View
+        Implemented but have some uncertain problems.
+    2) Clinic Creation
+        Request:
+                form-method: POST
+                data-type  : form data
+                data       : "name":text, "address":text, "logo":file
+                url        : "api/v1/clinic"
+        Response:
+                result: JSON data, Http Status Code
+                Example:
+                        {"result":"success"}
