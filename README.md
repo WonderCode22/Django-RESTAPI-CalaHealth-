@@ -4,7 +4,7 @@ Develop RESTful API to send database data to FE which is built in React
 # Login
 Used PyJWT for authentication
 
-#Environment Setup
+# Environment Setup
 1. Install pip and virtualenv
 2. Create your env and activate it
 3. Install PostgreSQL and create cala_health database.
